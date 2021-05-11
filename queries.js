@@ -20,7 +20,7 @@ const {id, accountid, accountnumber, wireroutingnumber, achroutingnumber, dwolla
 }
 
 const insertopportunity = (request, response) => {
-const {id,created,modified,lead_userId,lead_fi_Id,lead_name,currentBalanceInPennies,dueBy,retaining,loanType,tags,location_city,location_state,location_street,rate,term,description,amortization,grading,leadFee_serviceFee,leadfee_flatFeeInPennies,status,percentFunded,percentCommitted,contractId,resourceType) = request.body
+const {id,created,modified,lead_userId,lead_fi_Id,lead_name,currentBalanceInPennies,dueBy,retaining,loanType,tags,location_city,location_state,location_street,rate,term,description,amortization,grading,leadFee_serviceFee,leadfee_flatFeeInPennies,status,percentFunded,percentCommitted,contractId,resourceType} = request.body
  pool.query( "INSERT INTO opportunity (id, created, modified,lead_userId,lead_fi_Id,lead_name,currentBalanceInPennies,dueBy,retaining,loanType,tags,location_city,location_state,location_street,rate,term,description,amortization,grading,leadFee_serviceFee,leadfee_flatFeeInPennies,status,percentFunded,percentCommitted,contractId,resourceType) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)",[id, created, modified,lead_userId,lead_fi_Id,lead_name,currentBalanceInPennies,dueBy,retaining,loanType,tags,location_city,location_state,location_street,rate,term,description,amortization,grading,leadFee_serviceFee,leadfee_flatFeeInPennies,status,percentFunded,percentCommitted,contractId,resourceType],(error, results) => {
    if (error) {
      throw error
@@ -70,7 +70,7 @@ const { id, type, amountinpennies, status,feeInpennies,feepaidby,rollupid,moneyw
 }
 
 const insertmessage = (request, response) => {
-const {id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified) = request.body
+const {id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified} = request.body
      pool.query( "INSERT INTO opportunity (id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)",[id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified],(error, results) => {
        if (error) {
          throw error
