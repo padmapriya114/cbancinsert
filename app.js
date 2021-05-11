@@ -12,13 +12,13 @@ app.use(
   })
 )
 
-app.post('/countries', db.insertfi)
-app.post('/countries', db.insertopportunity)
-app.post('/countries', db.insertdeal)
-app.post('/countries', db.insertdeal_participant)
-app.post('/countries', db.inserttransfer)
-app.post('/countries', db.insertdisbursement)
-app.post('/countries', db.insertmessage)
+app.post('/fi', db.insertfi)
+app.post('/opportunity', db.insertopportunity)
+app.post('/deal', db.insertdeal)
+app.post('/deal_participant', db.insertdeal_participant)
+app.post('/transfer', db.inserttransfer)
+app.post('/disbursement', db.insertdisbursement)
+app.post('/message', db.insertmessage)
 
 
 app.listen(8000, () => {
