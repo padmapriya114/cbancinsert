@@ -31,7 +31,7 @@ const {id,created,modified,lead_userId,lead_fi_Id,lead_name,currentBalanceInPenn
 
 const insertdeal = (request, response) => {
 const { id, oppotunityid, percentfunded, percentcommitted, retaining, status, resourcetype, loanstatus } = request.body
-  pool.query( "INSERT INTO countries (id,oppotunityid,percentfunded,percentcommitted,retaining,status,resourcetype,loanstatus) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)",[id, oppotunityid, percentfunded, percentcommitted, retaining, status, resourcetype, loanstatus], (error, results) => {
+  pool.query( "INSERT INTO deal(id,oppotunityid,percentfunded,percentcommitted,retaining,status,resourcetype,loanstatus) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)",[id, oppotunityid, percentfunded, percentcommitted, retaining, status, resourcetype, loanstatus], (error, results) => {
     if (error) {
       throw error
     }
@@ -41,7 +41,7 @@ const { id, oppotunityid, percentfunded, percentcommitted, retaining, status, re
 
 const insertdeal_participant = (request, response) => {
 const { id, userid, deal_id, percent, agreementid, resourcetype, fi_id, funded_amountinpennies, funded_date, funded_user_id, funded_name } = request.body
-  pool.query( "INSERT INTO countries (id,userid,deal_id,percent,agreementid,resourcetype,fi_id,funded_amountinpennies,funded_date,funded_user_id,funded_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)",[id, userid, deal_id, percent, agreementid, resourcetype, fi_id, funded_amountinpennies, funded_date, funded_user_id, funded_name], (error, results) => {
+  pool.query( "INSERT INTO deal_participant (id,userid,deal_id,percent,agreementid,resourcetype,fi_id,funded_amountinpennies,funded_date,funded_user_id,funded_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)",[id, userid, deal_id, percent, agreementid, resourcetype, fi_id, funded_amountinpennies, funded_date, funded_user_id, funded_name], (error, results) => {
     if (error) {
       throw error
     }
@@ -50,8 +50,8 @@ const { id, userid, deal_id, percent, agreementid, resourcetype, fi_id, funded_a
 }
 
 const inserttransfer = (request, response) => {
-const { id, amountinpennies, status, "feeInpennies", feepaidby, rollupid, moneywas, type, previousprincipalbalanceinpennies, deal_participant_id } = request.body
-  pool.query( "INSERT INTO countries (id,amountinpennies,status, "feeInpennies", feepaidby, rollupid, moneywas, type, previousprincipalbalanceinpennies, deal_participant_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,)",[id, amountinpennies, status, "feeInpennies", feepaidby, rollupid, moneywas, type, previousprincipalbalanceinpennies, deal_participant_i], (error, results) => {
+const { id,amountinpennies,status,feeInpennies,feepaidby,rollupid,moneywas,type,previousprincipalbalanceinpennies,deal_participant_id } = request.body
+  pool.query( "INSERT INTO transfer(id,amountinpennies,status,feeInpennies, feepaidby, rollupid, moneywas, type, previousprincipalbalanceinpennies, deal_participant_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,)",[id, amountinpennies, status,feeInpennies, feepaidby, rollupid, moneywas, type, previousprincipalbalanceinpennies,deal_participant_id], (error, results) => {
     if (error) {
       throw error
     }
@@ -61,7 +61,7 @@ const { id, amountinpennies, status, "feeInpennies", feepaidby, rollupid, moneyw
 
 const insertdisbursement = (request, response) => {
 const { id, type, amountinpennies, status,feeInpennies,feepaidby,rollupid,moneywas,principalinpennies,disbursementdetails_interestinpennies,borrowerfeesinpennies,sellerfeesinpennies,memo,previousprincipalbalanceinpennies,deal_participant_id} = request.body
-  pool.query( "INSERT INTO countries (id,type,amountinpennies,status,feeInpennies,feepaidby,rollupid,moneywas,principalinpennies,disbursementdetails_interestinpennies,borrowerfeesinpennies,sellerfeesinpennies,memo,previousprincipalbalanceinpennies,deal_participant_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)",[id, type, amountinpennies, status,feeInpennies,feepaidby,rollupid, moneywas, principalinpennies, disbursementdetails_interestinpennies, borrowerfeesinpennies, sellerfeesinpennies, memo, previousprincipalbalanceinpennies, deal_participant_id], (error, results) => {
+  pool.query( "INSERT INTO disbursement (id,type,amountinpennies,status,feeInpennies,feepaidby,rollupid,moneywas,principalinpennies,disbursementdetails_interestinpennies,borrowerfeesinpennies,sellerfeesinpennies,memo,previousprincipalbalanceinpennies,deal_participant_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)",[id, type, amountinpennies, status,feeInpennies,feepaidby,rollupid, moneywas, principalinpennies, disbursementdetails_interestinpennies, borrowerfeesinpennies, sellerfeesinpennies, memo, previousprincipalbalanceinpennies, deal_participant_id], (error, results) => {
     if (error) {
       throw error
     }
@@ -71,7 +71,7 @@ const { id, type, amountinpennies, status,feeInpennies,feepaidby,rollupid,moneyw
 
 const insertmessage = (request, response) => {
 const {id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified} = request.body
-     pool.query( "INSERT INTO opportunity (id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)",[id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified],(error, results) => {
+     pool.query( "INSERT INTO message (id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)",[id,dealId,subject,author_userId,author_fiId,author_name,body,created,modified],(error, results) => {
        if (error) {
          throw error
        }
